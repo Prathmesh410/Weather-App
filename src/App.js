@@ -13,7 +13,7 @@ const Container = styled.div`
   border-radius : 4px;
   width : 300px;
   
-  background: white;
+  background: #f2ffff;
   font-family : Ubuntu;
 
 `
@@ -29,7 +29,8 @@ const App =() => {
   return (
    <Container>
      <h1>Weather App</h1>
-     <City/>
+     {/* <City/> */}
+     <Weather/>
      
    </Container>
      
