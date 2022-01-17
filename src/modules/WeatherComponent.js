@@ -81,26 +81,33 @@ const WeatherinfoComponent= (props) => {
           <InfoContainer>
                <InfoIcon/>
                <InfoLable>
-                    12 : 00 
+                    <span>{props.value}</span> 
                     <span>{props.name}</span>
                </InfoLable>
           </InfoContainer>
      )
 }
-const WeatherComponent = () => {
+const WeatherComponent = (props) => {
+     const{weather} = props;
+     const isDay = weather?.weather[0].icon?.includes("d");
+     
+     
+     const getTime = (timeStamp) => {
+          return `${new Date(timeStamp * 1000).getHours()} : ${new Date(timeStamp * 1000).getMinutes()}`
+     }
      return(
         <>
           <WeatherCondition>
-               <Condition><span>30 c</span><span> | Cloudy</span></Condition>
+               <Condition><span>{`${Math.floor(weather?.main?.temp - 273)} C` }</span><span>{`| ${weather?.weather[0].description}`}</span></Condition>
                <WeatherIcon src="public\icons\weatherWithLighting.png"/>
           </WeatherCondition>
-          <Location>London,GB</Location>
+          <Location>{`${weather?.name}, ${weather?.sys?.country} `}</Location>
           <WeatherInfo>Weather Information</WeatherInfo>
                <WeatherinfoContainer>
-                    <WeatherinfoComponent name="sunrise" value="" />
-                    <WeatherinfoComponent name="humidity" value="" />
-                    <WeatherinfoComponent name="wind" value="" />
-                    <WeatherinfoComponent name="pressure" value="" />
+                    <WeatherinfoComponent name={isDay ? "sunset" : "sunrise"} value={`${getTime(weather?.sys[isDay ?"sunset" : "sunrise"])} ${isDay ? "pm" : "am"}`}/>
+                    <WeatherinfoComponent name="humidity" value={weather?.main?.humidity} />
+                    <WeatherinfoComponent name="wind" value={`${weather?.wind?.speed} | ${weather.wind?.deg}`}  />
+                    <WeatherinfoComponent name="pressure" value={`${weather?.main?.pressure} Pa`} />
                </WeatherinfoContainer>
         </>
      )

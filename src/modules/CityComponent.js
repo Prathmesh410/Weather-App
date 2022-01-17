@@ -45,14 +45,15 @@ font-weight:bold;
 
 `
 
-const CityComponent = () => {
+const CityComponent = (props) => {
+    const {updatecity , fetchWeather} = props;
    return (
     <div>
         <Weatherlogo src="public\icons\weatherWithLighting.png"/>
         <ChooseCity>Find Weather of Your City</ChooseCity>
-        <SearchBox>
-            <input placeholder="City Name"/>
-            <button>Search</button>
+        <SearchBox onSubmit={fetchWeather}>
+            <input placeholder="City Name" onChange={(e) => {updatecity(e.target.value)}}/>
+            <button type ="submit" >Search</button>
         </SearchBox>
     </div>
        
