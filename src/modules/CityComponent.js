@@ -1,11 +1,14 @@
 
 import React from "react";
 import styled from "styled-components";
-
+import cons from "../icons/weatherWithLighting.png"
 const Weatherlogo =styled.img`
 width: 140px;
 height: 140px;
 margin: 40px auto;
+display: flex;
+justify-content:center;
+
 `
 const ChooseCity =styled.span`
 color:black;
@@ -49,7 +52,7 @@ const CityComponent = (props) => {
     const {updatecity , fetchWeather} = props;
    return (
     <div>
-        <Weatherlogo src="public\icons\weatherWithLighting.png"/>
+        <Weatherlogo src={cons}/>
         <ChooseCity>Find Weather of Your City</ChooseCity>
         <SearchBox onSubmit={fetchWeather}>
             <input placeholder="City Name" onChange={(e) => {updatecity(e.target.value)}}/>

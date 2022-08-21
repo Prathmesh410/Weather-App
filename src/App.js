@@ -20,11 +20,11 @@ const Container = styled.div`
   font-family: Ubuntu;
 `;
 
-const Heading = styled.span`
-  color: black;
-  font-size: 20 px;
-  font-weight: bold;
-`;
+// const Heading = styled.span`
+//   color: black;
+//   font-size: 20 px;
+//   font-weight: bold;
+// `;
 
 const App = () => {
   const [city, setCity] = useState("");
