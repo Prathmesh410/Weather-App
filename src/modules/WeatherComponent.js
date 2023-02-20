@@ -120,9 +120,9 @@ const WeatherComponent = (props) => {
           <Location>{`${weather?.name}, ${weather?.sys?.country} `}</Location>
           <WeatherInfo>Weather Information</WeatherInfo>
                <WeatherinfoContainer>
-                    <WeatherinfoComponent icon={isDay ? Day : Night} name={isDay ? "sunset" : "sunrise"} value={`${getTime(weather?.sys[isDay ?"sunset" : "sunrise"])} ${isDay ? "pm" : "am"}`}/>
+                    <WeatherinfoComponent icon={isDay ? Day : Night} name={isDay ? "sunset" : "sunrise"} value={`${getTime(weather?.sys[isDay ?"Today's sunset" : "Today's sunrise"])} ${isDay ? "pm" : "am"}`}/>
                     <WeatherinfoComponent icon={Humidity} name="humidity" value={weather?.main?.humidity} />
-                    <WeatherinfoComponent icon={Wind}name="wind" value={`${weather?.wind?.speed} | ${weather.wind?.deg}`}  />
+                    <WeatherinfoComponent icon={Wind}name="wind" value={` ${weather?.wind?.speed} | ${weather.wind?.deg}`}  />
                     <WeatherinfoComponent icon={Pressure} name="pressure" value={`${weather?.main?.pressure} Pa`} />
                </WeatherinfoContainer>
         </>
