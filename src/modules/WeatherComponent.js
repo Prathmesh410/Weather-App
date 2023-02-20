@@ -111,13 +111,16 @@ const WeatherComponent = (props) => {
      return(
         <>
           <WeatherCondition>
-               <Condition><span>{`${Math.floor(weather?.main?.temp - 273)} C` }</span><span>{`| ${weather?.weather[0].description}`}</span></Condition>
+               <Condition>
+          <span>{`${Math.floor(weather?.main?.temp - 273)} C` }</span><span>
+          {`| ${weather?.weather[0].description}`}</span>
+          </Condition>
                <WeatherIcon src={Wind}/>
           </WeatherCondition>
           <Location>{`${weather?.name}, ${weather?.sys?.country} `}</Location>
           <WeatherInfo>Weather Information</WeatherInfo>
                <WeatherinfoContainer>
-                    <WeatherinfoComponent icon={!isDay ? Day : Night} name={!isDay ? "sunset" : "sunrise"} value={`${getTime(weather?.sys[!isDay ?"sunset" : "sunrise"])} ${!isDay ? "pm" : "am"}`}/>
+                    <WeatherinfoComponent icon={isDay ? Day : Night} name={isDay ? "sunset" : "sunrise"} value={`${getTime(weather?.sys[isDay ?"sunset" : "sunrise"])} ${isDay ? "pm" : "am"}`}/>
                     <WeatherinfoComponent icon={Humidity} name="humidity" value={weather?.main?.humidity} />
                     <WeatherinfoComponent icon={Wind}name="wind" value={`${weather?.wind?.speed} | ${weather.wind?.deg}`}  />
                     <WeatherinfoComponent icon={Pressure} name="pressure" value={`${weather?.main?.pressure} Pa`} />
